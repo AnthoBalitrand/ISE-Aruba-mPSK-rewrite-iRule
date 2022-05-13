@@ -11,4 +11,4 @@ For this purpose, the RADIUS PSK needs to be on the iRule as it is used on the c
 Notice that the "Request-Authenticator" value of each request is cached (with the default 180 seconds timeout) on the session table (using the RADIUS Packet-Identifier value as a key), as this value is 
 also reused to calculate the "Message-Authenticator" and "RADIUS-Authenticator" fields of the reply. 
 
-![diagram](doc/diagram.png)
+![diagram](doc/diagram-backg.png)

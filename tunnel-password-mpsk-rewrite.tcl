@@ -79,9 +79,9 @@ when SERVER_DATA {
             # MD5(Code+ID+Length+RequestAuth+Attributes+Secret) where + denotes concatenation
             # Need to scan again the payload which has been modified 
             binary scan [UDP::payload] x20H* rad_attrs 
-        	set b "[binary format H*H*SH*H*a* $reply_rad_code $reply_rad_pid [UDP::payload length] $lookup_rad_auth $rad_attrs $static::seckey]" 
-        	# Apply the modified value to the reply 
-        	UDP::payload replace 4 16 [md5 $b]   
+            set b "[binary format H*H*SH*H*a* $reply_rad_code $reply_rad_pid [UDP::payload length] $lookup_rad_auth $rad_attrs $static::seckey]" 
+            # Apply the modified value to the reply 
+            UDP::payload replace 4 16 [md5 $b]   
         } else {
             log local0.info "Unable to find cached Request-Authenticator field for Radius Packet Identifier $reply_rad_pid"
         }

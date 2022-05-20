@@ -15,7 +15,7 @@ when CLIENT_DATA {
         # The Request-Authenticator value is very important as it needs to be used on the reply's Message-Authenticator and Response-Authenticator hashes
         binary scan [UDP::payload] H2H2x2H32H* req_rad_code req_rad_pid req_rad_auth req_rad_attrs 
         # Storing the key/value pair pid/authenticator on the session table, to be able to find the correct Request-Authenticator value when 
-        # forging the reply (if the Access-Point sends a lot of requests in a short amount of time, multiple requests can be received, while waiting for the reply for the RADIUS)
+        # forging the reply (if the Access-Point sends a lot of requests in a short amount of time, multiple requests can be received, while waiting for the reply from the RADIUS)
         session add uie $req_rad_pid $req_rad_auth
         if {$static::debug} {
             log local0.info "Request RAD_CODE : $req_rad_code"
